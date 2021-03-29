@@ -1,0 +1,13 @@
+[Unit]
+Description=Deluge Docker
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type-oneshot
+RemainAfterExit=false
+ExecStart=docker-compose -f /dockerCompose/config/compose/deluge.yml up -d
+ExecStop=docker-compose -f /dockerCompose/config/compose/deluge.yml down
+
+[Install]
+WantedBy=multi-user.target

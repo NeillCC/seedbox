@@ -1,0 +1,15 @@
+[Unit]
+Description=Jackett docker
+After=docker.service
+Requires=docker.service
+Wants=seedSWAGDocker.service
+
+[Service]
+Type-oneshot
+RemainAfterExit=true
+Restart=always
+ExecStart=docker-compose -f /dockerCompose/config/compose/jackett.yml up -d --remove-orphans
+ExecStop=docker-compose -f /dockerCompose/config/compose/jackett.yml down
+
+[Install]
+WantedBy=multi-user.target

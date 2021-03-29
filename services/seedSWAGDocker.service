@@ -1,0 +1,13 @@
+[Unit]
+Description=SWAG docker
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type-oneshot
+RemainAfterExit=true
+ExecStart=docker-compose -f /dockerCompose/config/compose/swag.yml up -d
+ExecStop=docker-compose -f /dockerCompose/config/compose/swag.yml down
+
+[Install]
+WantedBy=multi-user.target
