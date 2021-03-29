@@ -1,0 +1,20 @@
+version: "2.1"
+services:
+  deluge:
+    image: ghcr.io/linuxserver/deluge
+    container_name: deluge
+    networks:
+      - proxyNet
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - DELUGE_LOGLEVEL=error #optional
+    volumes:
+      - /dockerCompose/volumes/deluge/config:/config
+      - /dockerCompose/volumes/deluge/downloads:/downloads
+    restart: unless-stopped
+
+networks:
+    proxyNet:
+      name: SWAG Proxy

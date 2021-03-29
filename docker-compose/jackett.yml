@@ -1,0 +1,22 @@
+version: "2.1"
+services:
+  jackett:
+    image: ghcr.io/linuxserver/jackett
+    container_name: jackett
+    networks:
+      - proxyNet
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/New_York
+      - AUTO_UPDATE=true #optional
+    volumes:
+      - /dockerCompose/volumes/jackett/config:/config
+      - /dockerCompose/volumes/jackett/downloads:/downloads
+    ports:
+      - 9117:9117
+    restart: unless-stopped
+
+networks:
+    proxyNet:
+      name: SWAG Proxy
