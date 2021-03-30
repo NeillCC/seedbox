@@ -1,1 +1,1 @@
-docker-compose -f /dockerCompose/config/swag.yml -f /dockerCompose/config/deluge.yml -f /dockerCompose/config/jackett.yml -f /dockerCompose/config/graylog.yml -f -f /dockerCompose/config/heimdall.yml up -d
+docker-compose -f /dockerCompose/config/swag.yml -f /dockerCompose/config/deluge.yml -f /dockerCompose/config/jackett.yml -f /dockerCompose/config/graylog.yml -f /dockerCompose/config/heimdall.yml up -d
