@@ -6,7 +6,7 @@ services:
     networks:
       - graylogInternal
     volumes:
-      - /dockerCompose/volumes/mongodb_graylog:/data/db
+      - /dockerCompose/volumes/graylog/mongodb:/data/db
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     container_name: graylog_elasticsearch
@@ -18,7 +18,7 @@ services:
       - transport.host=localhost
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
-      - /dockerCompose/volumes/graylog/elasticsearch_graylog:/usr/share/elasticsearch/data
+      - /dockerCompose/volumes/graylog/elasticsearch:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
