@@ -1,0 +1,21 @@
+version: "2.1"
+services:
+  heimdall:
+    image: ghcr.io/linuxserver/heimdall
+    container_name: heimdall
+    networks:
+      - proxyNet
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Europe/London
+    volumes:
+      - /dockerCompose/volumes/heimdall/config:/config
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    
+networks:
+    proxyNet:
+      name: SWAG Proxy
