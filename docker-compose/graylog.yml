@@ -3,13 +3,15 @@ services:
   mongodb:
     image: mongo:4.2
     container_name: mongodb_graylog
-    volumes:
-      - /dockerCompose/volumes/mongodb_graylog:/data/db
+    network_mode: "bridge"
     networks:
       - graylogInternal
+    volumes:
+      - /dockerCompose/volumes/mongodb_graylog:/data/db
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     container_name: elasticsearch_graylog
+    network_mode: "bridge"
     networks:
       - graylogInternal
     environment:
@@ -27,6 +29,7 @@ services:
   graylog:
     image: graylog/graylog:4.0
     container_name: graylog
+    network_mode: "bridge"
     networks:
       - proxyNet
       - graylogInternal

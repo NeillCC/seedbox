@@ -3,6 +3,7 @@ services:
   deluge:
     image: ghcr.io/linuxserver/deluge
     container_name: deluge
+    network_mode: "bridge"
     networks:
       - proxyNet
     environment:

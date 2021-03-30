@@ -3,6 +3,7 @@ services:
   heimdall:
     image: ghcr.io/linuxserver/heimdall
     container_name: heimdall
+    network_mode: "bridge"
     networks:
       - proxyNet
     environment:
