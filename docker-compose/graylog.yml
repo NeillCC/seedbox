@@ -2,7 +2,9 @@ version: '2'
 services:
   mongodb:
     image: mongo:4.2
-    container_name: mongoDB_graylog
+    container_name: mongodb_graylog
+    volumes:
+      - /dockerCompose/volumes/mongodb_graylog:/data/db
     networks:
       - graylogInternal
   elasticsearch:
@@ -15,6 +17,8 @@ services:
       - transport.host=localhost
       - network.host=0.0.0.0
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    volumes:
+      - /dockerCompose/volumes/graylog/elasticsearch_graylog:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -26,6 +30,8 @@ services:
     networks:
       - proxyNet
       - graylogInternal
+    volumes:
+      - /dockerCompose/volumes/graylog/graylogConfig:/usr/share/graylog/data
     environment:
       # CHANGE ME (must be at least 16 characters)!
       #- GRAYLOG_PASSWORD_SECRET=somepasswordpepper
