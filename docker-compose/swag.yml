@@ -3,7 +3,6 @@ services:
   swag:
     image: ghcr.io/linuxserver/swag
     container_name: swag
-    network_mode: "bridge"
     networks:
       - proxyNet
     cap_add:
