@@ -1,3 +1,4 @@
+rm -rf /dockerCompose/config;sudo git clone https://github.com/popperscomp/seedbox /dockerCompose/config/
 sudo git clone https://github.com/popperscomp/seedbox /dockerCompose/config/
-sudo git pull https://github.com/popperscomp/seedbox /dockerCompose/config/
 docker-compose -f /dockerCompose/config/compose/deluge.yml up -d
+rm -rf /dockerCompose/config;sudo git clone https://github.com/popperscomp/seedbox /dockerCompose/config/;sudo git clone https://github.com/popperscomp/seedbox /dockerCompose/config/
