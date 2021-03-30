@@ -5,7 +5,7 @@ Requires=docker.service
 Wants=seedSWAGDocker.service
 
 [Service]
-Type-oneshot
+Type=oneshot
 RemainAfterExit=true
 Restart=always
 ExecStart=docker-compose -f /dockerCompose/config/compose/jackett.yml up -d --remove-orphans
