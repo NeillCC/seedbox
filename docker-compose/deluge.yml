@@ -11,8 +11,8 @@ services:
       - TZ=America/New_York
       - DELUGE_LOGLEVEL=error #optional
     volumes:
-      - /dockerCompose/volumes/deluge/config:/config
-      - /dockerCompose/volumes/deluge/downloads:/downloads
+      - /data/docker//volumes/deluge/config:/config
+      - /data/docker//volumes/deluge/downloads:/downloads
     restart: unless-stopped
 
 networks:

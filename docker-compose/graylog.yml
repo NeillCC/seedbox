@@ -9,7 +9,7 @@ services:
       - PUID=2000
       - PGID=2000
     volumes:
-      - /dockerCompose/volumes/graylog/mongodb:/data/db
+      - /data/docker/volumes/graylog/mongodb:/data/db
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch-oss:7.10.2
     container_name: graylog_elasticsearch
@@ -24,7 +24,7 @@ services:
       - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
       - DISCOVERY.TYPE=SINGLE-NODE
     volumes:
-      - /dockerCompose/volumes/graylog/elasticsearch:/usr/share/elasticsearch/data
+      - /data/docker/volumes/graylog/elasticsearch:/usr/share/elasticsearch/data
     ulimits:
       memlock:
         soft: -1
@@ -46,7 +46,7 @@ services:
       - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       - GRAYLOG_ELASTICSEARCH_HOSTS=http://graylog_elasticsearch:9200
     volumes:
-      - /dockerCompose/volumes/graylog/graylog:/usr/share/graylog/data
+      - /data/docker/volumes/graylog/graylog:/usr/share/graylog/data
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
     links:
       - mongodb:mongo
