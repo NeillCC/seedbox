@@ -24,7 +24,7 @@ services:
       - STAGING=false #optional
       - MAXMINDDB_LICENSE_KEY= rzicMLwJTSxW5eAJ
     volumes:
-      - /dockerCompose/volumes/swag/config:/config
+      - /dockerCompose/volumes/swag:/config
     ports:
       - 443:443
       - 80:80
