@@ -6,8 +6,6 @@ services:
     networks:
       - graylogInternal
     environment:
-      - PUID=2000
-      - PGID=2000
     volumes:
       - /data/docker/volumes/graylog/mongodb:/data/db
   elasticsearch:
@@ -16,15 +14,14 @@ services:
     networks:
       - graylogInternal
     environment:
-      - PUID=2000
-      - PGID=2000
 #      - network.host=0.0.0.0
 #      - http.host=0.0.0.0
       - XPACK.SECURITY.ENABLED=FALSE
       - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
       - DISCOVERY.TYPE=SINGLE-NODE
     volumes:
-      - /data/docker/volumes/graylog/elasticsearch:/usr/share/elasticsearch/data
+      - /data/docker/volumes/graylog/elasticsearch/config:/usr/share/elasticsearch
+      - /data/docker/volumes/graylog/elasticsearch/logs:/var/log/elasticsearch
     ulimits:
       memlock:
         soft: -1
@@ -37,8 +34,6 @@ services:
       - proxyNet
       - graylogInternal
     environment:
-      - PUID=2000
-      - PGID=2000
       # CHANGE ME (must be at least 16 characters)!
       #- GRAYLOG_PASSWORD_SECRET=somepasswordpepper
       # Password: admin
