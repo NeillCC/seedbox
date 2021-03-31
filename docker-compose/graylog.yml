@@ -20,8 +20,9 @@ services:
       - PGID=1000
 #      - network.host=0.0.0.0
 #      - http.host=0.0.0.0
-      - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
-      - DISCOVERY.TYPE=single-node
+      - XPACK.SECURITY.ENABLED=FALSE
+      - "ES_JAVA_OPTS=-XMS1G -XMX1G"
+      - DISCOVERY.TYPE=SINGLE-NODE
     volumes:
       - /dockerCompose/volumes/graylog/elasticsearch:/usr/share/elasticsearch/data
     ulimits:
