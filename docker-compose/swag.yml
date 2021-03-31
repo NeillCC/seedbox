@@ -8,8 +8,8 @@ services:
     cap_add:
       - NET_ADMIN
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=2000
+      - PGID=2000
       - TZ=America/New_York
       - URL=h4rb.bid
       - SUBDOMAINS=u

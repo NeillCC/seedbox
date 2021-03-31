@@ -6,8 +6,8 @@ services:
     networks:
       - graylogInternal
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=2000
+      - PGID=2000
     volumes:
       - /dockerCompose/volumes/graylog/mongodb:/data/db
   elasticsearch:
@@ -16,8 +16,8 @@ services:
     networks:
       - graylogInternal
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=2000
+      - PGID=2000
 #      - network.host=0.0.0.0
 #      - http.host=0.0.0.0
       - XPACK.SECURITY.ENABLED=FALSE
@@ -37,8 +37,8 @@ services:
       - proxyNet
       - graylogInternal
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=2000
+      - PGID=2000
       # CHANGE ME (must be at least 16 characters)!
       #- GRAYLOG_PASSWORD_SECRET=somepasswordpepper
       # Password: admin
