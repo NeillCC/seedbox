@@ -10,7 +10,7 @@ services:
       - PGID=1000
       - TZ=America/New_York
     volumes:
-      - /dockerCompose/volumes/heimdall/config:/config
+      - /dockerCompose/volumes/heimdall:/config
     restart: unless-stopped
 
 networks:
