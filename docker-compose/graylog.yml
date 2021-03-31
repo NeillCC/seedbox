@@ -5,6 +5,9 @@ services:
     container_name: graylog_mongodb
     networks:
       - graylogInternal
+    environment:
+      - PUID=1000
+      - PGID=1000
     volumes:
       - /dockerCompose/volumes/graylog/mongodb:/data/db
   elasticsearch:
@@ -32,15 +35,17 @@ services:
     networks:
       - proxyNet
       - graylogInternal
-    volumes:
-      - /dockerCompose/volumes/graylog/graylog:/usr/share/graylog/data
     environment:
+      - PUID=1000
+      - PGID=1000
       # CHANGE ME (must be at least 16 characters)!
       #- GRAYLOG_PASSWORD_SECRET=somepasswordpepper
       # Password: admin
       #- GRAYLOG_ROOT_PASSWORD_SHA2=8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918
       - GRAYLOG_HTTP_EXTERNAL_URI=http://127.0.0.1:9000/
       - GRAYLOG_ELASTICSEARCH_HOSTS=http://graylog_elasticsearch:9200
+    volumes:
+      - /dockerCompose/volumes/graylog/graylog:/usr/share/graylog/data
     entrypoint: /usr/bin/tini -- wait-for-it elasticsearch:9200 --  /docker-entrypoint.sh
     links:
       - mongodb:mongo
