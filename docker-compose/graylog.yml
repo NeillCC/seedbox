@@ -17,6 +17,7 @@ services:
 #      - http.host=0.0.0.0
       - XPACK.SECURITY.ENABLED=FALSE
       - "ES_JAVA_OPTS=-Xms1G -Xmx1G"
+      - transport.host=localhost
       - DISCOVERY.TYPE=SINGLE-NODE
     volumes:
       - /data/docker/volumes/graylog/elasticsearch/config:/usr/share/elasticsearch
